@@ -12,7 +12,7 @@ export const productTableHead = [
 export const products = [
   {
     id: "1",
-    "product-name": "Farmer's App",
+    "product-name": "Farmer's New App",
     "base-price": "8000",
     "discount": "5",
     "selling-price": "6000",
