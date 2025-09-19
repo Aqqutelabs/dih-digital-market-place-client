@@ -2,7 +2,6 @@
 
 import AuthWrapper from "@/components/auth/auth-wrapper";
 import Button from "@/ui/button";
-import EmailInput from "@/ui/forms/email-input";
 import PasswordInput from "@/ui/forms/password-input";
 import { redirect } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
