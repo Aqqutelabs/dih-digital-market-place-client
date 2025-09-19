@@ -15,7 +15,7 @@ export default function CardComponent({
     border,
 }: CardProps) {
   return (
-    <div className={`w-full rounded-xl bg-white shadow-md ${border && 'border border-[#233E9733]'}`} style={{ height: height, width: width }}>
+    <div className={`w-full rounded-xl bg-white shadow-md py-5 ${border && 'border border-[#233E9733]'}`} style={{ height: height, width: width }}>
         { children }
     </div>
   );
