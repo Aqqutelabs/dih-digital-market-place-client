@@ -9,6 +9,7 @@ import SearchInput from "@/ui/search-input";
 import Table from "@/ui/table";
 import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useState } from "react";
 
@@ -88,7 +89,7 @@ export default function Products() {
                           Edit
                         </li>
                         <li className="cursor-pointer hover:text-green-600 border-y border-gray-300 py-4">
-                          View
+                          <Link href={`/products/${row.id}`} >View</Link>
                         </li>
                         <li className="cursor-pointer hover:text-red-600">
                           Delete
