@@ -1,41 +1,61 @@
 "use client";
 
 import AuthWrapper from "@/components/auth/auth-wrapper";
+import VerificationModal from "@/components/auth/verification-modal";
 import Button from "@/ui/button";
-import Checkbox from "@/ui/forms/checkbox";
 import EmailInput from "@/ui/forms/email-input";
+import NumberInput from "@/ui/forms/number-input";
 import PasswordInput from "@/ui/forms/password-input";
+import TextInput from "@/ui/forms/text-input";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
-export default function SignIn() {
+
+export default function SignUp() {
   const [error, setError] = useState<string>("");
 
   const [userData, setUserData] = useState({
     email: "",
+    fullName: "",
     password: "",
+    phoneNumber: "",
   });
 
-  const [checkbox, handleCheckbox] = useState(false);
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData((prev) => ({ ...prev, [name]: value }));
     if (error) setError("");
   };
 
+  // for opening verfification modal
+  const [isOpen, setIsOpen] = useState(false);
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    redirect("/dashboard");
-  }
+    setIsOpen(true);
+  };
   return (
-    <AuthWrapper heading="Sign in to access your dashboard">
-      <form onSubmit={handleSubmit} className="w-full md:w-[400px] space-y-6 mt-10">
+    <AuthWrapper heading="Sign Up as a vendor on WiderNetFarms">
+      <form onSubmit={handleSubmit} className="w-full md:w-[400px] space-y-3">
         <EmailInput
           name="email"
           label="Email"
           placeholder="Enter email address"
           value={userData.email}
+          onChange={handleInputChange}
+        />
+        <TextInput
+          name="fullName"
+          label="Full Name"
+          value={userData.fullName}
+          placeholder="Enter your full name"
+          onChange={handleInputChange}
+        />
+        <NumberInput
+          name="phoneNumber"
+          value={userData.phoneNumber}
+          label="Phone Number"
+          placeholder="Enter phone number"
           onChange={handleInputChange}
         />
         <PasswordInput
@@ -45,31 +65,23 @@ export default function SignIn() {
           placeholder="Enter your password"
           onChange={handleInputChange}
         />
-        <div className="flex justify-between items-center text-[10px] md:text-xs">
-          <Checkbox
-          label="Remember Me"
-          name="rememberMe"
-          isChecked={checkbox}
-          onChange={handleCheckbox}
-          />
-        <Link
-            href={"/forgot-password"}
-            className="font-bold text-[#16A249] cursor-pointer"
-          >
-            Forgot Password?
-          </Link>
-        </div>
-        <Button content="Login" />
+        <Button content="Sign Up" />
         <div className="text-xs md:text-sm space-x-1 text-center md:text-start">
-          <span className="text-[#363636]">Don&apos;t have an account?</span>
+          <span className="text-[#363636]">Already have an account?</span>
           <Link
-            href={"/sign-up"}
+            href={"/sign-in"}
             className="font-bold text-[#16A249] cursor-pointer"
           >
-            Sign Up
+            Sign In
           </Link>
         </div>
       </form>
+
+      {/* verification modal */}
+      <VerificationModal
+      isOpen={isOpen}
+      onClose={() => setIsOpen(false)}
+      />
     </AuthWrapper>
   );
 }
