@@ -72,7 +72,7 @@ export default function DropDown({
       {/* Custom dropdown trigger */}
       <div
         onClick={handleToggle}
-        className={`h-11 min-w-full md:w-fit outline-none border border-[#E4E9EF] focus:border-[#16A249] hover:border-[#16A249] rounded px-2 py-1 text-sm flex items-center justify-between bg-white transition-colors duration-200 gap-3 ${
+        className={`h-12 min-w-full md:w-fit outline-none border border-[#E4E9EF] focus:border-[#16A249] hover:border-[#16A249] rounded-lg px-2 py-1 text-sm flex items-center justify-between bg-white transition-colors duration-200 gap-3 ${
           isDisabled ? "cursor-not-allowed text-gray-400" : "cursor-pointer"
         }`}
       >
@@ -85,7 +85,7 @@ export default function DropDown({
               className="text-[#1F1F1F]"
             />
           )}
-          <span className="text-[#1F1F1F] whitespace-nowrap">{displayValue}</span>
+          <span className="text-[#606062] whitespace-nowrap">{displayValue}</span>
         </div>
 
         <Icon

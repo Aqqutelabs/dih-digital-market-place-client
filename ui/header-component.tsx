@@ -12,7 +12,7 @@ export default function Header() {
   const pathname = usePathname();
 
     const matched = breadcrumbs.find((item) => {
-        return pathname.includes(item.href)
+        return pathname === item.href;
     });
     
   return (

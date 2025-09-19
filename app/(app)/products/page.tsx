@@ -9,12 +9,14 @@ import SearchInput from "@/ui/search-input";
 import Table from "@/ui/table";
 import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "framer-motion";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 
 export default function Products() {
   const [query, setQuery] = useState("");
 
   const [activeRow, setActiveRow] = useState<string | null>(null);
+
 
   return (
     <CardComponent>
@@ -44,7 +46,7 @@ export default function Products() {
           </div>
           <div className="flex items-center gap-3 md:w-[428px]">
             <Button content="Remove Product" isSecondary />
-            <Button content="List a Product" />
+            <Button content="List a Product" onClick={() => redirect("/products/listing")} />
           </div>
         </div>
       </div>
