@@ -31,3 +31,49 @@ export const salesStats = [
         iconBg: "#83A0FF",
     },
 ];
+
+export const refundedVouchers = [
+    {
+        id: "01",
+        name: "Tech Product",
+        amount: "20, 000",
+    },
+    {
+        id: "02",
+        name: "Tech Software",
+        amount: "20, 000",
+    },
+    {
+        id: "03",
+        name: "Tractor",
+        amount: "20, 000",
+    },
+    {
+        id: "04",
+        name: "Tractor App",
+        amount: "20, 000",
+    },
+];
+
+export const cancelledTransactions = [
+    {
+        id: "01",
+        name: "Tech Product",
+        amount: "20, 000",
+    },
+    {
+        id: "02",
+        name: "Tech Software",
+        amount: "20, 000",
+    },
+    {
+        id: "03",
+        name: "Tractor",
+        amount: "20, 000",
+    },
+    {
+        id: "04",
+        name: "Tractor App",
+        amount: "20, 000",
+    },
+];

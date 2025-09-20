@@ -1,12 +1,15 @@
 "use client";
 
 import DashboardStat from "@/components/dashboard-stat-card";
-import { dashboardStats } from "@/lib/demo-data/dashboard";
+import { dashboardStats, selloutRate, topSellingProducts } from "@/lib/demo-data/dashboard";
 import { products, productTableHead } from "@/lib/demo-data/products";
+import BarChartComponent from "@/ui/bar-chart";
 import Button from "@/ui/button";
 import CardComponent from "@/ui/card-wrapper";
 import DropDown from "@/ui/forms/select-dropdown";
 import Heading from "@/ui/heading";
+import ProgressBar from "@/ui/progress-bar";
+import ProgressTab from "@/ui/progress-tab";
 import SearchInput from "@/ui/search-input";
 import Table from "@/ui/table";
 import { Icon } from "@iconify/react";
@@ -20,7 +23,7 @@ export default function Dashboard() {
   const [activeRow, setActiveRow] = useState<string | null>(null);
 
   return (
-    <section className="space-y-5">
+    <section className="space-y-10">
       <CardComponent border={false}>
         <div className="p-5">
           <div className="flex justify-between items-center">
@@ -43,7 +46,48 @@ export default function Dashboard() {
           </div>
         </div>
       </CardComponent>
-      <div className="flex items-center gap-4"></div>
+      <div className="flex items-start gap-4">
+        {/* top selling products */}
+        <CardComponent border={false}>
+          <div className="flex justify-between items-center px-5">
+            <Heading heading="Top Selling Products" />
+            <div className="w-[100px]">
+              <DropDown
+                name="filter"
+                placeholder="All Time"
+                onChange={() => {}}
+                options={[]}
+                value=""
+              />
+            </div>
+          </div>
+          <div className="p-5 h-[330px]">
+            <BarChartComponent data={topSellingProducts} xKey="name" />
+          </div>
+        </CardComponent>
+        {/* monthly sellout rate */}
+        <CardComponent border={false} height="100%">
+          <div className="p-5">
+            <Heading heading="Monthly Sell-out Rate" />
+            <Table
+            tableHead={["#", "Name", "Popularity", "Sales"]}
+            tableData={selloutRate}
+            renderRow={(row) => (
+                <>
+                <td className="px-6">{row.id}</td>
+                <td className="px-6">{row.name}</td>
+                <td className="px-6">
+                    <ProgressBar amount={row.popularity} color={row.color}/>
+                </td>
+                <td className="px-6">
+                    <ProgressTab text={row.sales} color={row.color}/>
+                </td>
+                </>
+            )}
+            />
+          </div>
+        </CardComponent>
+      </div>
       {/* products card */}
       <CardComponent>
         {/* heading, filters, button */}

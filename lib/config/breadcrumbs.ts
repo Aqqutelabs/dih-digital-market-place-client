@@ -1,3 +1,9 @@
+// import { usePathname } from "next/navigation";
+
+// const pathname = usePathname();
+// const productId = pathname.split("/").pop();
+//   const selectedProduct = products.find((product) => product.id === productId);
+
 export const breadcrumbs = [
     {
         href: "/dashboard",
@@ -12,7 +18,7 @@ export const breadcrumbs = [
         header: "List a Product",
     },
     {
-        href: "/product/:id",
+        href: `/product/id}`,
         header: "Product Overview",
     },
     {
