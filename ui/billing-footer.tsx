@@ -50,7 +50,7 @@ export default function BillingFooter() {
             Phasellus imperdiet elit eu magna.
           </p>
         </div>
-        {/* search */}
+        {/* email */}
         <div className="w-[500px] relative">
           <EmailInput
             name="email"
@@ -58,7 +58,7 @@ export default function BillingFooter() {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Your email address"
           />
-          <button className="absolute right-0 top-0 bg-[#16A249] rounded-r-md h-12 w-[100px] py-3 px-4 text-white">
+          <button className="absolute right-0 top-0 bg-[#16A249] rounded-md h-12 w-[100px] py-3 px-4 text-white">
             Subscribe
           </button>
         </div>

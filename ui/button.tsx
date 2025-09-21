@@ -11,7 +11,7 @@ type ButtonProps = {
   icon?: string;
   isDisabled?: boolean;
   isLoading?: boolean;
-  variant?: 'normal' | 'warning' | 'error';
+  variant?: 'normal' | 'warning' | 'error' | "plain";
 };
 
 export default function Button({
@@ -42,6 +42,11 @@ export default function Button({
         primary: 'bg-[#FF4D4F] text-white hover:bg-[#ff3538] active:bg-[#e6292c]',
         secondary: 'bg-transparent text-[#FF4D4F] border border-[#FF4D4F] hover:bg-[#FF4D4F]/10 active:bg-[#FF4D4F]/20',
         disabled: 'bg-[#94a3b8] text-white cursor-not-allowed'
+      },
+      plain: {
+        primary: "bg-[#F2F2F2] text-[#444A6D] hover:bg-gray-100",
+        secondary: "bg-transparent text-[#444A6D] border border-[#F2F2F2] hover:bg-[#F2F2F2]/10",
+        disabled: "bg-gray-50 cursor-nor-allowed text-gray-200"
       }
     };
 

@@ -23,7 +23,7 @@ export default function BillingLayout({
       <BillingHeader/>
 
       {/* back button */}
-      <div className="my-5 gap-2 items-center flex ml-10 hover:cursor-pointer">
+      <div className="mt-5 gap-2 items-center flex ml-10 hover:cursor-pointer">
         <Icon icon={"icon-park-outline:arrow-left"} color="#D97706" height={28} width={28} />
         <Link href={"/dashboard"} className="font-semibold text-[#D97706] text-base">Back to shop</Link>
       </div>
