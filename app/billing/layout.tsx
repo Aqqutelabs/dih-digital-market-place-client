@@ -4,7 +4,6 @@ import BillingHeader from "@/ui/billing-header";
 import { Open_Sans } from "next/font/google";
 import { Icon } from "@iconify/react";
 import BillingFooter from "@/ui/billing-footer";
-import Link from "next/link";
 
 const open_sans = Open_Sans({
   subsets: ["latin"],
@@ -25,7 +24,7 @@ export default function BillingLayout({
       {/* back button */}
       <div className="mt-5 gap-2 items-center flex ml-10 hover:cursor-pointer">
         <Icon icon={"icon-park-outline:arrow-left"} color="#D97706" height={28} width={28} />
-        <Link href={"/dashboard"} className="font-semibold text-[#D97706] text-base">Back to shop</Link>
+        <p onClick={() => window.history.back()} className="font-semibold text-[#D97706] text-base">Back to shop</p>
       </div>
       <div className="px-10 my-10">{children}</div>
       <BillingFooter/>
