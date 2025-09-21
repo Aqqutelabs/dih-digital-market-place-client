@@ -1,0 +1,64 @@
+"use client";
+import SearchInput from "@/ui/search-input";
+import Image from "next/image";
+import { useState } from "react";
+import { Icon } from "@iconify/react";
+
+export default function BillingHeader() {
+  const [query, setQuery] = useState("");
+
+  const headerLinks = ["Home", "Software", "Hardware", "Digital Products"]
+  return (
+    <header className="px-10">
+      {/* cta and preferences */}
+      <div className="flex justify-end items-center gap-5 py-3 border-b border-[#E5E5E5] text-gray-600 text-xs">
+        <div className="flex gap-1 items-center">
+          <span className="hover:text-[#16A249] cursor-pointer">Eng</span>
+          <span className="hover:text-[#16A249] cursor-pointer">NGN</span>
+        </div>
+        |
+        <div className="flex gap-1 items-center">
+          <span className="hover:text-[#16A249] cursor-pointer">Sign In</span>/
+          <span className="hover:text-[#16A249] cursor-pointer">Sign Up</span>
+        </div>
+      </div>
+      <div className="flex justify-between items-center py-3">
+        {/* logo */}
+        <div className="relative w-[140px] h-[69px] py-5">
+          <Image
+            src={"/wider-net-logo.svg"}
+            alt="DeliverPoint 2025"
+            fill
+            className="object-contain"
+          />
+        </div>
+        {/* search */}
+        <div className="w-[500px] relative">
+          <SearchInput
+            name="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search"
+          />
+          <button className="absolute right-0 top-0 bg-[#16A249] rounded-r-md h-11 w-[100px] py-3 px-4 text-white">
+            Search
+          </button>
+        </div>
+        <div className="text-[#16A249] h-[32px] w-fit p-1 border-b border-[#16A249]">
+          <p className="text-base">Sell a Product</p>
+        </div>
+      </div>
+      <div className="bg-[#1A1A1A] h-[68px] w-full flex justify-between items-center px-4">
+        <ul className="flex gap-8 items-center">
+            {headerLinks.map((link, index) => (
+                <li key={index} className="font-semibold text-white text-base">{link}</li>
+            ))}
+        </ul>
+        <div className="flex gap-4 items-center py-4 px-6">
+            <Icon icon={"iconamoon:shopping-bag-thin"} height={30} width={30} color="white" />
+            <Icon icon={"circum:user"} height={30} width={30} color="white"/>
+        </div>
+      </div>
+    </header>
+  );
+}

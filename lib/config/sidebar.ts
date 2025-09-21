@@ -26,7 +26,7 @@ export const sidebarData = [
     {
         url: "/account",
         iconActive: "heroicons-solid:user-circle",
-        iconRegular: "heroicons:user-circle-16-solide",
+        iconRegular: "heroicons:user-circle-16-solid",
         name: "Account",
     },
 ];

@@ -3,7 +3,7 @@ type EmailInputProps = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
-  label: string;
+  label?: string;
   name: string;
 }
 
