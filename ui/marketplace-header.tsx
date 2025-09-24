@@ -4,10 +4,10 @@ import Image from "next/image";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 
-export default function BillingHeader() {
+export default function MarketplaceHeader() {
   const [query, setQuery] = useState("");
 
-  const headerLinks = ["Home", "Software", "Hardware", "Digital Products"]
+  const headerLinks = ["Home", "Software", "Hardware", "Digital Products", "All Products"]
   return (
     <header className="px-10">
       {/* cta and preferences */}

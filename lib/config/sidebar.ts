@@ -1,30 +1,30 @@
 export const sidebarData = [
     {
-        url: "/dashboard",
+        url: "/vendor/dashboard",
         iconActive: "fluent:home-empty-20-filled",
         iconRegular: "fluent:home-empty-20-regular",
         name: "Dashboard",
     },
     {
-        url: "/products",
+        url: "/vendor/products",
         iconActive: "famicons:bag",
         iconRegular: "famicons:bag-outline",
         name: "Products",
     },
     {
-        url: "/sales",
+        url: "/vendor/sales",
         iconActive: "f7:chart-bar-fill",
         iconRegular: "f7:chart-bar",
         name: "Sales Report",
     },
     {
-        url: "/notifications",
+        url: "/vendor/notifications",
         iconActive: "famicons:notifications",
         iconRegular: "famicons:notifications-outline",
         name: "Notifications",
     },
     {
-        url: "/account",
+        url: "/vendor/account",
         iconActive: "heroicons-solid:user-circle",
         iconRegular: "heroicons:user-circle-16-solid",
         name: "Account",
