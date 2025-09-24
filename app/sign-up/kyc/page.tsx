@@ -24,7 +24,7 @@ export default function Kyc() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    redirect("/dashboard");
+    redirect("/vendor/dashboard");
   };
   return (
     <AuthWrapper heading="Sign Up as a vendor on WiderNetFarms">

@@ -47,7 +47,7 @@ export default function Products() {
           </div>
           <div className="flex items-center gap-3 md:w-[428px]">
             <Button content="Remove Product" isSecondary />
-            <Button content="List a Product" onClick={() => redirect("/products/listing")} />
+            <Button content="List a Product" onClick={() => redirect("/vendor/products/listing")} />
           </div>
         </div>
       </div>
@@ -89,7 +89,7 @@ export default function Products() {
                           Edit
                         </li>
                         <li className="cursor-pointer hover:text-green-600 border-y border-gray-300 py-4">
-                          <Link href={`/products/${row.id}`} >View</Link>
+                          <Link href={`/vendor/products/${row.id}`} >View</Link>
                         </li>
                         <li className="cursor-pointer hover:text-red-600">
                           Delete

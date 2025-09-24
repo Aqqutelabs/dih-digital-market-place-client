@@ -27,7 +27,7 @@ export default function DashboardStat({
       </div>
       <h3 className="text-2xl font-semibold text-[#122231]">{amount}</h3>
       <p className="text-base font-normal text-[#222B45]">{category}</p>
-      <p className="text-[#4079ED] text-xs font-normal">{infoText}</p>
+      {infoText && <p className="text-[#4079ED] text-xs font-normal">{infoText}</p>}
     </div>
   );
 }

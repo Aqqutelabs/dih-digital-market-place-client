@@ -114,7 +114,7 @@ export default function Dashboard() {
                 icon="majesticons:filter-line"
               />
             </div>
-            <Link href={"/products"} className="text-[#16A249] text-base">
+            <Link href={"/vendor/products"} className="text-[#16A249] text-base">
               View All
             </Link>
           </div>
@@ -157,7 +157,7 @@ export default function Dashboard() {
                             Edit
                           </li>
                           <li className="cursor-pointer hover:text-green-600 border-y border-gray-300 py-4">
-                            <Link href={`/products/${row.id}`}>View</Link>
+                            <Link href={`/vendor/products/${row.id}`}>View</Link>
                           </li>
                           <li className="cursor-pointer hover:text-red-600">
                             Delete

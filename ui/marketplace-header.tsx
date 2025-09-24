@@ -56,7 +56,7 @@ export default function MarketplaceHeader() {
           </button>
         </div>
         <div className="text-[#16A249] h-[32px] w-fit p-1 border-b border-[#16A249]">
-          <p className="text-base">Sell a Product</p>
+          <Link href={"/sign-up"} className="text-base cursor-pointer">Sell a Product</Link>
         </div>
       </div>
       <div className="bg-[#1A1A1A] h-[68px] w-full flex justify-between items-center px-4">

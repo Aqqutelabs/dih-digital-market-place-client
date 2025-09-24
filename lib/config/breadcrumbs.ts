@@ -10,15 +10,15 @@ export const breadcrumbs = [
         header: "Dashboard",
     },
     {
-        href: "/products",
+        href: "/vendor/products",
         header: "Products",
     },
     {
-        href: "/products/listing",
+        href: "/vendor/products/listing",
         header: "List a Product",
     },
     {
-        href: `/product/id}`,
+        href: `/vendor/product/id}`,
         header: "Product Overview",
     },
     {
