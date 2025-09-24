@@ -35,7 +35,7 @@ export default function Account() {
                 category={stat.category}
                 icon={stat.icon}
                 iconBg={stat.iconBg}
-                infoText={`${stat.duration}`}
+                duration={`${stat.duration}`}
               />
             ))}
           </div>

@@ -49,7 +49,8 @@ const lines = [{ key: "value", label: "Month", color: "#EFDD76", showDots: false
                 category={stat.category}
                 icon={stat.icon}
                 iconBg={stat.iconBg}
-                infoText={`${stat.percent}% ${stat.duration}`}
+                percent={stat.percent}
+                duration={stat.duration}
               />
             ))}
           </div>

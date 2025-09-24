@@ -11,12 +11,14 @@ export const accountStats = [
         category: "My Balance",
         icon: "heroicons:chart-bar-square-16-solid",
         iconBg: "#FA5A7D",
+        duration: "",
     },
     {
         amount: "0",
         category: "Pending Withdrawal",
         icon: "streamline:tag-solid",
         iconBg: "#3CD856",
+        duration: "",
     },
     {
         amount: "₦220,342",
