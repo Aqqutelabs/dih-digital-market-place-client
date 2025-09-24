@@ -3,11 +3,22 @@ import SearchInput from "@/ui/search-input";
 import Image from "next/image";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function MarketplaceHeader() {
   const [query, setQuery] = useState("");
 
-  const headerLinks = ["Home", "Software", "Hardware", "Digital Products", "All Products"]
+  const headerLinks = [
+    { name: "Home", route: "/" },
+    { name: "Software", route: "/software" },
+    { name: "Hardware", route: "/hardware" },
+    { name: "Digital Products", route: "/digital-products" },
+    { name: "All Products", route: "/all-products" },
+  ];
+
+  const pathname = usePathname();
+
   return (
     <header className="px-10">
       {/* cta and preferences */}
@@ -50,13 +61,26 @@ export default function MarketplaceHeader() {
       </div>
       <div className="bg-[#1A1A1A] h-[68px] w-full flex justify-between items-center px-4">
         <ul className="flex gap-8 items-center">
-            {headerLinks.map((link, index) => (
-                <li key={index} className="font-semibold text-white text-base">{link}</li>
-            ))}
+          {headerLinks.map((link, index) => (
+            <Link
+              href={link.route}
+              key={index}
+              className={`font-semibold text-white text-base py-2 rounded-b-[2px] h-10 ${
+                pathname === link.route && "border-b-3 border-[#EFDD76]"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
         </ul>
         <div className="flex gap-4 items-center py-4 px-6">
-            <Icon icon={"iconamoon:shopping-bag-thin"} height={30} width={30} color="white" />
-            <Icon icon={"circum:user"} height={30} width={30} color="white"/>
+          <Icon
+            icon={"iconamoon:shopping-bag-thin"}
+            height={30}
+            width={30}
+            color="white"
+          />
+          <Icon icon={"circum:user"} height={30} width={30} color="white" />
         </div>
       </div>
     </header>

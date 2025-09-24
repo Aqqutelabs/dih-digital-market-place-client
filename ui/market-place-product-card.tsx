@@ -18,7 +18,7 @@ export default function ProductCard({
   lifetime_price,
 }: ProductProps) {
   return (
-    <div className="shadow-md rounded-xl border border-[#D7D7D7] h-[400px] w-[335px]">
+    <div className="shadow-md rounded-xl border border-[#D7D7D7] h-[400px] min-w-[335px] w-full">
         {/* main image and tag */}
       <div className="rounded-xl h-[190px] relative w-full">
         <Image

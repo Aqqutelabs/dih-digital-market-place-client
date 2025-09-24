@@ -44,7 +44,7 @@ export default function BillingLayout({
           </p>
         </div>
       )}
-      <div className="px-10 my-10">{children}</div>
+      <div className="px-10 my-5">{children}</div>
       {routesWithNewsletter.includes(pathname) && <NewsletterComponent />}
       <Footer />
     </section>
