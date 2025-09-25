@@ -68,10 +68,7 @@ export default function SignUp() {
         <Button content="Sign Up" />
         <div className="text-xs md:text-sm space-x-1 text-center md:text-start">
           <span className="text-[#363636]">Already have an account?</span>
-          <Link
-            href={"/sign-in"}
-            className="font-bold text-[#16A249] cursor-pointer"
-          >
+          <Link href="/sign-in" className="font-bold text-[#16A249] cursor-pointer">
             Sign In
           </Link>
         </div>

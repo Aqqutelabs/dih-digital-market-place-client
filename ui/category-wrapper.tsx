@@ -7,18 +7,13 @@ export default function CategoryWrapper({
   children,
   title,
   product_count,
+  categories,
 }: Readonly<{
   children: React.ReactNode;
-  title: string;
-  product_count: string;
+  title?: string;
+  product_count?: string;
+  categories: string[];
 }>) {
-  const categories = [
-    "Ai Tools",
-    "Monitoring Apps",
-    "Book Keeping",
-    "Farm Operations",
-    "Finance",
-  ];
 
   const [activeTab, setActiveTab] = useState(0);
   return (

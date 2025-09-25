@@ -3,7 +3,7 @@
 import AuthWrapper from "@/components/auth/auth-wrapper";
 import Button from "@/ui/button";
 import PasswordInput from "@/ui/forms/password-input";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 export default function ResetPassword() {
@@ -22,7 +22,7 @@ export default function ResetPassword() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    redirect("/sign-in");
+    // redirect("/sign-in");
   }
 
   return (
@@ -42,7 +42,7 @@ export default function ResetPassword() {
         value={userData.confirmPassword}
         onChange={handleInputChange}
         />
-        <Button content="Submit" />
+        <Button content="Submit" href="/sign-in" />
       </form>
     </AuthWrapper>
   );

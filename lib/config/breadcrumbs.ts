@@ -22,15 +22,15 @@ export const breadcrumbs = [
         header: "Product Overview",
     },
     {
-        href: "/sales",
+        href: "/vendor/sales",
         header: "Sales Report",
     },
     {
-        href: "/notifications",
+        href: "/vendor/notifications",
         header: "Notifications",
     },
     {
-        href: "/account",
+        href: "/vendor/account",
         header: "Account Management",
     },
 ];

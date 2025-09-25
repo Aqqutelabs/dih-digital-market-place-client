@@ -10,7 +10,6 @@ import Table from "@/ui/table";
 import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { useState } from "react";
 
 export default function Products() {
@@ -47,7 +46,7 @@ export default function Products() {
           </div>
           <div className="flex items-center gap-3 md:w-[428px]">
             <Button content="Remove Product" isSecondary />
-            <Button content="List a Product" onClick={() => redirect("/vendor/products/listing")} />
+            <Button content="List a Product" href="/vendor/products/listing" />
           </div>
         </div>
       </div>

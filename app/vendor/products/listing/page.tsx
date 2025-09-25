@@ -10,6 +10,7 @@ import Heading from "@/ui/heading";
 import { Icon } from "@iconify/react";
 
 export default function ProductLsiting() {
+  const id = 2;
   return (
     <CardComponent>
       <section className="p-5">
@@ -186,7 +187,7 @@ export default function ProductLsiting() {
             <p className="text-[#16A249] font-bold text-lg">Add a Variant</p>
           </div>
           <div className="w-[225px]">
-            <Button content="Submit Listing" />
+            <Button content="Submit Listing" href={`/vendor/products/listing/${id}`} />
           </div>
         </div>
       </section>

@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import Button from "@/ui/button";
 import OTPInput from "@/ui/forms/otp-input";
 import { useState } from "react";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 
 type VerificationModalProps = {
@@ -20,9 +20,9 @@ export default function VerificationModal({
   const [OTP, setOTP] = useState("");
   console.log(OTP);
 
-  const handleVerification = () => {
-    redirect("/sign-up/kyc")
-  }
+  // const handleVerification = () => {
+  //   // redirect("/sign-up/kyc")
+  // }
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="gap-5 flex flex-col justify-center items-center mb-5">
@@ -56,7 +56,7 @@ export default function VerificationModal({
       </div>
       <div className="flex gap-3 items-center">
         <Button content="Cancel" isSecondary onClick={onClose} />
-        <Button content="Verify" onClick={handleVerification} />
+        <Button content="Verify" href="/sign-up/kyc" />
       </div>
     </Modal>
   );

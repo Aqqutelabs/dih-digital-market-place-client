@@ -3,7 +3,7 @@
 import AuthWrapper from "@/components/auth/auth-wrapper";
 import Button from "@/ui/button";
 import EmailInput from "@/ui/forms/email-input";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 export default function ForgotPassword() {
@@ -21,7 +21,7 @@ export default function ForgotPassword() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    redirect("/reset-password");
+    // redirect("/reset-password");
   }
 
   return (
@@ -34,7 +34,7 @@ export default function ForgotPassword() {
           value={userData.email}
           onChange={handleInputChange}
         />
-        <Button content="Continue" />
+        <Button content="Continue" href="/reset-password" />
       </form>
     </AuthWrapper>
   );

@@ -147,11 +147,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
 
 const ProductPhotos = ({ product }: { product: Product }) => {
   return (
-    <div className="w-full">
-      <Heading
-        heading={product["product-name"]}
-        subtitle={`Units Sold: ${product["total-sold"]}`}
-      />
+    <div className="w-full h-full">
 
       <div className="space-y-8 mt-6">
         {product.description.map((desc, i) => (
@@ -173,8 +169,9 @@ const ProductPhotos = ({ product }: { product: Product }) => {
         ))}
       </div>
 
-      <div className="flex items-center gap-4 mt-10 w-[225px]">
-        <Button content="Update Product" />
+      <div className="flex items-center gap-4 mt-20">
+        <Button content="List Product" />
+        <Button content="Edit Information" isSecondary />
       </div>
     </div>
   );
@@ -201,7 +198,7 @@ export default function ProductOverview() {
         {/* Header */}
         <div className="flex gap-4 items-start">
           <BackButton onClick={() => window.history.back()} />
-          <Heading heading="Product Information" />
+          <Heading heading="Product Overview" />
         </div>
 
         {/* Content */}

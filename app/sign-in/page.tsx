@@ -6,7 +6,7 @@ import Checkbox from "@/ui/forms/checkbox";
 import EmailInput from "@/ui/forms/email-input";
 import PasswordInput from "@/ui/forms/password-input";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 export default function SignIn() {
@@ -26,7 +26,7 @@ export default function SignIn() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    redirect("/dashboard");
+    // redirect("/dashboard");
   }
   return (
     <AuthWrapper heading="Sign in to access your dashboard">
@@ -59,7 +59,7 @@ export default function SignIn() {
             Forgot Password?
           </Link>
         </div>
-        <Button content="Login" />
+        <Button content="Login" href="/vendor/dashboard" />
         <div className="text-xs md:text-sm space-x-1 text-center md:text-start">
           <span className="text-[#363636]">Don&apos;t have an account?</span>
           <Link

@@ -84,7 +84,7 @@ export default function Button({
 
   if (href) {
     return (
-      <Link href={href} className={isDisabled ? 'pointer-events-none' : ''}>
+      <Link href={href} className={`${isDisabled ? 'pointer-events-none' : ''} block w-full`}>
         <button 
           className={classes}
           disabled={isDisabled}

@@ -120,7 +120,7 @@ export default function CartPage() {
                 <p className="text-[#222B45] font-bold">NGN 18,000.99.00</p>
               </div>
             </div>
-            <Button content="Proceed to checkout" href="/billing/checkout" />
+            <Button content="Proceed to checkout" href="/checkout" />
           </div>
         </CardComponent>
       </div>

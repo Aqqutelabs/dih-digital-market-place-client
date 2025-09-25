@@ -123,7 +123,7 @@ export default function Home() {
                 key={product.id}
                 image={"/images/product-placeholder.svg"}
                 name={product["product-name"]}
-                description={product.description["variation-1"]}
+                description={"Lorem ipsum dolor sit amet"}
                 price={product["base-price"]}
                 lifetime_price={product["listing-price"]}
                 />
@@ -158,7 +158,7 @@ export default function Home() {
                 key={product.id}
                 image={"/images/placeholder-image.svg"}
                 name={product["product-name"]}
-                description={product.description["variation-1"]}
+                description={"Lorem ipsum dolor sit amet"}
                 price={product["base-price"]}
                 lifetime_price={product["listing-price"]}
                 />

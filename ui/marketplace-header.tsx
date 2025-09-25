@@ -74,12 +74,14 @@ export default function MarketplaceHeader() {
           ))}
         </ul>
         <div className="flex gap-4 items-center py-4 px-6">
-          <Icon
-            icon={"iconamoon:shopping-bag-thin"}
-            height={30}
-            width={30}
-            color="white"
-          />
+          <Link href={"/cart"}>
+            <Icon
+              icon={"iconamoon:shopping-bag-thin"}
+              height={30}
+              width={30}
+              color="white"
+            />
+          </Link>
           <Icon icon={"circum:user"} height={30} width={30} color="white" />
         </div>
       </div>
