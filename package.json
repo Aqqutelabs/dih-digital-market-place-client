@@ -10,10 +10,13 @@
   },
   "dependencies": {
     "@iconify/react": "^6.0.2",
+    "axios": "^1.12.2",
     "framer-motion": "^12.23.15",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-hot-toast": "^2.6.0",
+    "react-scroll": "^1.9.3",
     "recharts": "^3.2.1"
   },
   "devDependencies": {

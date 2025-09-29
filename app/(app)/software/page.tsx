@@ -18,7 +18,7 @@ export default function SoftwareProducts() {
       product_count="400"
       categories={categories}
     >
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {products.map((product) => (
           <ProductCard
             key={product.id}

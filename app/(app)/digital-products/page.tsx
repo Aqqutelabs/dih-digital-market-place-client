@@ -14,7 +14,7 @@ export default function DigitalProducts() {
     ];
   return (
     <CategoryWrapper title="Browse Digital Products" product_count="45" categories={categories}>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {products.map((product) => (
           <ProductCard
             key={product.id}
