@@ -57,7 +57,7 @@ export default function Button({
     return isSecondary ? variants[variant]?.secondary : variants[variant].primary;
   };
 
-  const classes = `${getVariantStyles()} rounded-[8px] h-9 md:h-[48px] w-full px-1 md:px-2 leading-6 font-medium text-xs md:text-sm md:text-base transition-all duration-200 ease-in-out transform ${
+  const classes = `${getVariantStyles()} rounded-[8px] h-8 md:h-[48px] w-full px-1 md:px-2 leading-6 font-medium text-xs md:text-sm md:text-base transition-all duration-200 ease-in-out transform ${
     icon ? "gap-2 flex items-center justify-center" : "flex items-center justify-center"
   } ${
     isDisabled ? '' : 'shadow-sm hover:shadow-md'
