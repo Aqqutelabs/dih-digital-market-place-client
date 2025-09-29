@@ -35,11 +35,11 @@ export default function CheckoutPage() {
     <>
       <div className="space-y-4">
         <h3 className="text-2xl text-[#122231] font-semibold">Checkout</h3>
-        <div className="flex items-start gap-8 mt-5">
+        <div className="flex flex-col md:flex-row items-start gap-8 mt-5">
           {/* billing info */}
-          <div className="w-3/5">
+          <div className="w-full md:w-3/5">
             <Heading heading="Billing Information" />
-            <div className="grid grid-cols-2 gap-5 my-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-5">
               <TextInput
                 name="firstName"
                 label="First name"
@@ -99,11 +99,11 @@ export default function CheckoutPage() {
           </div>
 
           {/* order summary */}
-          <div className="w-2/5">
+          <div className="w-full md:w-2/5">
             <CardComponent>
               <div className="px-5 space-y-4">
                 <Heading heading="Order Summary" />
-                <div className="space-y-5 text-base">
+                <div className="space-y-5 text-xs md:text-base">
                   {orders.map((order, index) => (
                     <div
                       key={index}
@@ -119,7 +119,7 @@ export default function CheckoutPage() {
                         />
                         <p>{order.name}</p>
                       </div>
-                      <p className="text-[#222B45] text-base font-semibold">
+                      <p className="text-[#222B45] font-semibold">
                         {order.price}
                       </p>
                     </div>
@@ -139,7 +139,7 @@ export default function CheckoutPage() {
                     <p className="text-[#222B45] font-semibold">NGN 1000.99</p>
                   </div>
                   <div className="h-12 flex justify-between items-center py-3">
-                    <p className="text-[#444A6D] text-lg">Total:</p>
+                    <p className="text-[#444A6D] text-base md:text-lg">Total:</p>
                     <p className="text-[#222B45] font-bold">NGN 18,000.99.00</p>
                   </div>
                 </div>
@@ -162,10 +162,10 @@ export default function CheckoutPage() {
             width={345}
             className="object-cover"
           />
-          <h1 className="text-2xl font-semibold text-[#222B45] text-center">
+          <h1 className="text-xl md:text-2xl font-semibold text-[#222B45] text-center">
             Order Completed!
           </h1>
-          <p className="text-base text-[#444A6D] text-center">
+          <p className="text-xs md:text-base text-[#444A6D] text-center">
             Head to the{" "}
             <span className="text-[#0E51FB] font-semibold cursor-pointer">
               www.productpage.com
@@ -173,7 +173,7 @@ export default function CheckoutPage() {
             , add it to cart and apply your coupon code at checkout to get your
             discount.
           </p>
-          <div className="w-full flex items-center gap-4 mt-4">
+          <div className="w-full flex flex-col md:flex-row items-center gap-2 md:gap-4 mt-4">
             <Button 
             content="View Order History"
             href="/order-history" 

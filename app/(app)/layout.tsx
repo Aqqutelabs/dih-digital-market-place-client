@@ -33,18 +33,18 @@ export default function BillingLayout({
           <Icon
             icon={"icon-park-outline:arrow-left"}
             color="#D97706"
-            height={28}
-            width={28}
+            height={24}
+            width={24}
           />
           <p
             onClick={() => window.history.back()}
-            className="font-semibold text-[#D97706] text-base"
+            className="font-semibold text-[#D97706] text-sm md:text-base"
           >
             Back to shop
           </p>
         </div>
       )}
-      <div className="px-10 my-5">{children}</div>
+      <div className="px-5 md:px-10 my-5">{children}</div>
       {routesWithNewsletter.includes(pathname) && <NewsletterComponent />}
       <Footer />
     </section>
