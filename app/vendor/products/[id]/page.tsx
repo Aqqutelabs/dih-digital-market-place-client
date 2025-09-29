@@ -78,8 +78,8 @@ const BackButton = ({ onClick }: { onClick: () => void }) => (
 );
 
 const DetailRow = ({ label, value }: { label: string; value: string }) => (
-  <div className="flex items-center justify-between border-b border-[#3C3C434A] py-1 text-[#222B45] text-sm md:text-base">
-    <p>{label}</p>
+  <div className="flex items-center justify-between border-b border-[#3C3C434A] py-1 text-[#222B45] text-xs md:text-base">
+    <p>{label}:</p>
     <p className="font-semibold">{value}</p>
   </div>
 );
@@ -96,7 +96,7 @@ const ProductImage = ({
   containerClassName?: string;
 }) => (
   <div className={`border border-[#233E9733] p-2 rounded-md ${containerClassName}`}>
-    <div className={`relative h-[120px] w-[95px] ${className}`}>
+    <div className={`relative h-[120px] md:w-[95px] w-[160px] ${className}`}>
       <Image alt={alt} src={src} fill className="object-cover rounded-md" />
     </div>
   </div>
@@ -156,8 +156,8 @@ const ProductPhotos = ({ product }: { product: Product }) => {
       <div className="space-y-8 mt-6">
         {product.description.map((desc, i) => (
           <div key={i} className="space-y-2">
-            <p className="font-semibold text-[#222B45]">{desc.name}</p>
-            <p className="text-base text-[#444A6D]">{desc.description}</p>
+            <p className="font-semibold text-[#222B45] text-sm md:text-lg">{desc.name}</p>
+            <p className="text-xs md:text-base text-[#444A6D]">{desc.description}</p>
 
             {/* Images for this description */}
             <div className="flex gap-1 flex-wrap">
@@ -173,7 +173,7 @@ const ProductPhotos = ({ product }: { product: Product }) => {
         ))}
       </div>
 
-      <div className="flex items-center gap-4 mt-10 w-[225px]">
+      <div className="flex items-center gap-4 mt-10 w-full md:w-[225px]">
         <Button content="Update Product" />
       </div>
     </div>
@@ -205,7 +205,7 @@ export default function ProductOverview() {
         </div>
 
         {/* Content */}
-        <div className="border border-[#7B91B0] rounded-xl p-5 space-y-5 mt-10 flex flex-col md:flex-row-reverse items-start gap-20">
+        <div className="border border-[#7B91B0] rounded-xl p-5 space-y-5 mt-10 flex flex-col md:flex-row-reverse items-start gap-0 md:gap-20">
           <ProductDetails product={selectedProduct} />
           <ProductPhotos product={selectedProduct} />
         </div>

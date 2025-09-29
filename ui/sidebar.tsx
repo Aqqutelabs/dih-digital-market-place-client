@@ -26,7 +26,7 @@ export default function Sidebar() {
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 transition-all duration-300 ease-in-out`}
       >
-        <div className="relative w-full h-[69px] py-5">
+        <div className="relative w-3/5 md:w-full h-10 md:h-[69px] py-5">
           <Image
             src={"/wider-net-logo.svg"}
             alt="DeliverPoint 2025"
@@ -43,8 +43,8 @@ export default function Sidebar() {
                 <Link
                   key={index}
                   href={link.url}
-                  onClick={() => router.push(link.url)}
-                  className={`h-11 w-full px-4 py-2.5 rounded-lg flex items-center gap-2 ${
+                  onClick={() => {router.push(link.url); closeMobile()}}
+                  className={`h-9 nd:h-11 w-full px-4 py-2.5 rounded-lg flex items-center gap-2 ${
                     isActive
                       ? "bg-[#16A249] text-white font-semibold"
                       : "hover:bg-gray-50 text-gray-600"
@@ -56,14 +56,14 @@ export default function Sidebar() {
                     height={20}
                     color={isActive ? "#FFF" : "#737373"}
                   />
-                  <span className="text-sm">{link.name}</span>
+                  <span className="text-xs md:text-sm">{link.name}</span>
                 </Link>
               );
             })}
           </div>
           <div
             onClick={() => {}}
-            className={`h-10 w-full px-4 py-2.5 rounded-lg flex items-center gap-2 text-[#FF4D4F] cursor-pointer hover:text-red-600 transition-colors duration-300`}
+            className={`h-9 md:h-10 w-full px-4 py-2.5 rounded-lg flex items-center gap-2 text-[#FF4D4F] cursor-pointer hover:text-red-600 transition-colors duration-300`}
           >
             <Icon
               icon={"streamline:logout-1"}
@@ -71,7 +71,7 @@ export default function Sidebar() {
               height={20}
               color={"#FF4D4F"}
             />
-            <span className="text-sm">Logout</span>
+            <span className="text-xs md:text-sm">Logout</span>
           </div>
         </section>
       </aside>

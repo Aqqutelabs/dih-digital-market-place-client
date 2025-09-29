@@ -47,7 +47,7 @@ export default function Dashboard() {
           </div>
         </div>
       </CardComponent>
-      <div className="flex items-start gap-4">
+      <div className="flex flex-col md:flex-row items-start gap-4">
         {/* top selling products */}
         <CardComponent border={false}>
           <div className="flex justify-between items-center px-5">
@@ -70,31 +70,41 @@ export default function Dashboard() {
         <CardComponent border={false} height="100%">
           <div className="p-5">
             <Heading heading="Monthly Sell-out Rate" />
-            <Table
-            tableHead={["#", "Name", "Popularity", "Sales"]}
-            tableData={selloutRate}
-            renderRow={(row) => (
-                <>
-                <td className="px-6">{row.id}</td>
-                <td className="px-6">{row.name}</td>
-                <td className="px-6">
-                    <ProgressBar amount={row.popularity} color={row.color}/>
-                </td>
-                <td className="px-6">
-                    <ProgressTab text={row.sales} color={row.color}/>
-                </td>
-                </>
-            )}
-            />
+            <div className="overflow-auto w-full">
+              <Table
+              tableHead={["#", "Name", "Popularity", "Sales"]}
+              tableData={selloutRate}
+              renderRow={(row) => (
+                  <>
+                  <td className="px-6">{row.id}</td>
+                  <td className="px-6">{row.name}</td>
+                  <td className="px-6">
+                      <ProgressBar amount={row.popularity} color={row.color}/>
+                  </td>
+                  <td className="px-6">
+                      <ProgressTab text={row.sales} color={row.color}/>
+                  </td>
+                  </>
+              )}
+              />
+
+            </div>
           </div>
         </CardComponent>
       </div>
       {/* products card */}
       <CardComponent>
         {/* heading, filters, button */}
-        <div className="flex justify-between items-center px-5">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-5">
+          <div className="flex justify-between items-center w-full">
           <Heading heading="Products" />
-          <div className="flex items-center gap-6">
+
+          {/* view all link on mobile only */}
+          <Link href={"/vendor/products"} className="text-[#16A249] text-xs block md:hidden">
+            View All
+          </Link>
+          </div>
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mt-5 md:mt-0">
             <div className="flex items-center gap-3 md:w-[340px]">
               <SearchInput
                 value={query}
@@ -115,19 +125,19 @@ export default function Dashboard() {
                 icon="majesticons:filter-line"
               />
             </div>
-            <Link href={"/vendor/products"} className="text-[#16A249] text-base">
+            <Link href={"/vendor/products"} className="text-[#16A249] text-base whitespace-nowrap hidden md:block">
               View All
             </Link>
           </div>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-10 overflow-auto w-full">
           <Table
             tableHead={productTableHead}
             tableData={products}
             renderRow={(row) => (
               <>
-                <td className="px-6">{row["product-name"]}</td>
+                <td className="px-6 whitespace-nowrap">{row["product-name"]}</td>
                 <td className="px-6">NGN{row["base-price"]}</td>
                 <td className="px-6">{row.discount}%</td>
                 <td className="px-6">NGN{row["selling-price"]}</td>
@@ -151,7 +161,7 @@ export default function Dashboard() {
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -10, opacity: 0 }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="absolute top-3/5 mt-2 right-10 bg-white z-30 rounded-xl shadow-md w-[100px] text-sm p-2.5"
+                        className="absolute top-3/5 mt-2 right-10 bg-white z-30 rounded-xl shadow-md w-[100px] text-xs md:text-sm p-2.5"
                       >
                         <ul className="space-y-3">
                           <li className="cursor-pointer hover:text-green-600">

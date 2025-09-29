@@ -21,9 +21,9 @@ export default function Products() {
   return (
     <CardComponent>
       {/* heading, filters, button */}
-      <div className="flex justify-between items-center px-5">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-5">
         <Heading heading="Products" />
-        <div className="flex items-center gap-6">
+        <div className="flex flex-col md:flex-row items-center gap-6 mt-4 md:mt-0">
           <div className="flex items-center gap-3 md:w-[340px]">
             <SearchInput
               value={query}
@@ -44,20 +44,20 @@ export default function Products() {
               icon="majesticons:filter-line"
             />
           </div>
-          <div className="flex items-center gap-3 md:w-[428px]">
+          <div className="flex items-center gap-3 w-full md:w-[428px]">
             <Button content="Remove Product" isSecondary />
             <Button content="List a Product" href="/vendor/products/listing" />
           </div>
         </div>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 overflow-auto w-full">
         <Table
           tableHead={productTableHead}
           tableData={products}
           renderRow={(row) => (
             <>
-              <td className="px-6">{row["product-name"]}</td>
+              <td className="px-6 whitespace-nowrap">{row["product-name"]}</td>
               <td className="px-6">NGN{row["base-price"]}</td>
               <td className="px-6">{row.discount}%</td>
               <td className="px-6">NGN{row["selling-price"]}</td>
@@ -81,7 +81,7 @@ export default function Products() {
                       animate={{ y: 0, opacity: 1 }}
                       exit={{ y: -10, opacity: 0 }}
                       transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute top-3/5 mt-2 right-10 bg-white z-30 rounded-xl shadow-md w-[100px] text-sm p-2.5"
+                      className="absolute top-3/5 mt-2 right-10 bg-white z-30 rounded-xl shadow-md w-[100px] text-xs md:text-sm p-2.5"
                     >
                       <ul className="space-y-3">
                         <li className="cursor-pointer hover:text-green-600">

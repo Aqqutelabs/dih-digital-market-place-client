@@ -33,7 +33,7 @@ export default function ProductLsiting() {
         {/* product details */}
         <div className="border border-[#7B91B0] rounded-xl p-5 space-y-5 mt-10">
           <Heading heading="Product Details" />
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <TextInput
               label="Product Name"
               value=""
@@ -48,7 +48,7 @@ export default function ProductLsiting() {
               name="productLink"
               placeholder="Enter Product Link"
             />
-            <div className="col-span-2">
+            <div className="md:col-span-2">
               <TextareaInput
                 label="Product Description"
                 name="productDescription"
@@ -59,7 +59,7 @@ export default function ProductLsiting() {
             </div>
           </div>
           <Heading heading="Category" />
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <DropDown
               label="Product Category"
               value=""
@@ -91,7 +91,7 @@ export default function ProductLsiting() {
             <h4 className="block text-lg font-bold text-[#122231] mb-2">
               Variant 1
             </h4>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
                 label="Variant Name"
                 value=""
@@ -136,7 +136,7 @@ export default function ProductLsiting() {
             <h4 className="block text-lg font-bold text-[#122231] mb-2">
               Variant 2
             </h4>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextInput
                 label="Variant Name"
                 value=""
@@ -184,9 +184,9 @@ export default function ProductLsiting() {
               height={20}
               width={20}
             />
-            <p className="text-[#16A249] font-bold text-lg">Add a Variant</p>
+            <p className="text-[#16A249] font-bold text-sm md:text-lg">Add a Variant</p>
           </div>
-          <div className="w-[225px]">
+          <div className="md:w-[225px]">
             <Button content="Submit Listing" href={`/vendor/products/listing/${id}`} />
           </div>
         </div>

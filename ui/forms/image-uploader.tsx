@@ -13,9 +13,9 @@ type Preview = {
 
 type ImageUploaderProps = {
   label: string;
-  maxSize?: number; // bytes (default 10MB)
-  acceptedTypes?: string[]; // mime types
-  initialImages?: string[]; // optional remote urls to pre-populate previews
+  maxSize?: number;
+  acceptedTypes?: string[];
+  initialImages?: string[];
   onChange?: (files: File[], previews: Preview[]) => void;
   multiple?: boolean;
 };
@@ -38,7 +38,6 @@ export default function ImageUploader({
   );
   const [dragActive, setDragActive] = useState(false);
 
-  // Revoke created object URLs on unmount
   useEffect(() => {
     return () => {
       previews.forEach((p) => {
@@ -47,19 +46,14 @@ export default function ImageUploader({
         }
       });
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
-  // notify parent when previews/files change
   useEffect(() => {
     if (onChange) {
-      const files = previews
-        .filter((p) => p.file)
-        .map((p) => p.file!) as File[];
+      const files = previews.filter((p) => p.file).map((p) => p.file!) as File[];
       onChange(files, previews);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [previews]);
+  }, [previews, onChange]);
 
   const handleFiles = (files: FileList | null) => {
     if (!files) return;
@@ -84,7 +78,6 @@ export default function ImageUploader({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleFiles(e.target.files);
-    // reset input so same file can be uploaded again if removed
     if (inputRef.current) inputRef.current.value = "";
   };
 
@@ -98,20 +91,16 @@ export default function ImageUploader({
     });
   };
 
-  /* Drag & drop handlers */
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
-    e.stopPropagation();
     setDragActive(true);
   };
   const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
-    e.stopPropagation();
     setDragActive(false);
   };
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
-    e.stopPropagation();
     setDragActive(false);
     handleFiles(e.dataTransfer.files);
   };
@@ -122,36 +111,31 @@ export default function ImageUploader({
         {label}
       </label>
 
-      <div className="w-full flex items-end gap-5">
-        {/* Upload area (flex-grow) */}
+      <div className="flex flex-col md:flex-row md:items-end gap-5">
+        {/* Upload area */}
         <div
           onDragOver={handleDragOver}
           onDragEnter={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
-          className={`flex items-center justify-center rounded-2xl border transition-shadow duration-150
+          className={`flex flex-1 items-center justify-center rounded-2xl border transition-shadow duration-150
             ${dragActive ? "border-green-300 shadow-md" : "border-[#233E9733]"}
-            bg-white min-h-[130px] min-w-[520px]`}
+            bg-white min-h-[130px] px-4 py-6`}
         >
           <label
             htmlFor="image-upload-input"
             className="w-full cursor-pointer"
             aria-hidden
           >
-            <div className="flex flex-col items-center gap-4 px-4 py-6">
-              <div className="flex flex-col items-start md:items-center gap-1 md:gap-2">
-                <Icon icon="heroicons-outline:upload" width={20} height={20} />
-
-                <div className="text-sm text-[#1F2937] whitespace-nowrap md:text-center">
-                  <span className="font-medium">Click to upload</span>{" "}
-                  <span className="text-[#6B7280]">or drag and drop</span>
-                </div>
-                <div className="text-xs text-[#9CA3AF] mt-1">
-                  Max 10mb. Only png and jpeg files
-                </div>
+            <div className="flex flex-col items-center gap-3">
+              <Icon icon="heroicons-outline:upload" width={24} height={24} />
+              <div className="text-sm text-[#1F2937] text-center">
+                <span className="font-medium">Click to upload</span>{" "}
+                <span className="text-[#6B7280]">or drag and drop</span>
               </div>
-
-              {/* Hidden input (kept inside label so clicking anywhere triggers it) */}
+              <div className="text-xs text-[#9CA3AF]">
+                Max 10mb. Only png and jpeg files
+              </div>
               <input
                 id="image-upload-input"
                 ref={inputRef}
@@ -165,27 +149,27 @@ export default function ImageUploader({
           </label>
         </div>
 
-        {/* Previews on right */}
-        <div className="flex items-center gap-3 w-full pr-1">
+        {/* Previews */}
+        <div className="flex flex-wrap md:flex-nowrap gap-3 w-full">
           {previews.map((p) => (
             <div
               key={p.id}
-              className="relative w-20 h-20 rounded-md overflow-visible border border-[#E6EDF3] bg-white"
+              className="relative w-20 h-20 rounded-md overflow-hidden border border-[#E6EDF3] bg-white"
             >
               <Image
                 src={p.url}
                 alt="preview"
                 className="w-full h-full object-cover"
                 draggable={false}
-                height={100}
-                width={100}
+                height={80}
+                width={80}
               />
 
               <button
                 type="button"
                 aria-label="Remove image"
                 onClick={() => handleRemove(p.id)}
-                className="absolute -top-2 -right-2 z-10 inline-flex items-center justify-center w-6 h-6 rounded-full bg-white"
+                className="absolute -top-2 -right-2 z-10 inline-flex items-center justify-center w-6 h-6 rounded-full bg-white shadow"
               >
                 <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#EF4444]">
                   <Icon icon="mdi:close" width={12} height={12} color="white" />

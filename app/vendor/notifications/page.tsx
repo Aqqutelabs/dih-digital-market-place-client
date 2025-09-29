@@ -33,7 +33,7 @@ export default function Notifications() {
               <div
                 onClick={() => setActiveTab(index)}
                 key={index}
-                className={`h-[30px] w-[70px] font-bold text-sm cursor-pointer ${
+                className={`h-[30px] w-[70px] font-bold text-xs md:text-sm cursor-pointer ${
                   activeTab === index
                     ? "border-b-4 border-[#16A249] text-[#212121]"
                     : "text-[#6C6685]"
@@ -47,16 +47,19 @@ export default function Notifications() {
 
         <div className="my-5 space-y-3">
           {notifs.map((notif) => (
-            <div
-              key={notif.id}
-              className="py-6 flex justify-between items-center border-b border-[#6C668533] text-[#212121] text-sm"
-            >
-              <div className="flex items-center gap-2">
-                <div className="size-1.5 rounded-full bg-[#16A249]"></div>
-                <p>🎉 {notif.message}</p>
+            <>
+              <div
+                key={notif.id}
+                className="py-6 flex justify-between items-center border-b border-[#6C668533] text-[#212121] text-xs md:text-sm"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="size-1.5 rounded-full bg-[#16A249]"></div>
+                  <p>🎉 {notif.message}</p>
+                </div>
+                <p className="hidden md:block">{notif.time}</p>
               </div>
-              <p>{notif.time}</p>
-            </div>
+              <p className="flex md:hidden text-[9px] justify-end">{notif.time}</p>
+            </>
           ))}
         </div>
       </div>
