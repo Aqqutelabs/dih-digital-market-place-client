@@ -5,10 +5,11 @@ import Button from "@/ui/button";
 import Checkbox from "@/ui/forms/checkbox";
 import EmailInput from "@/ui/forms/email-input";
 import PasswordInput from "@/ui/forms/password-input";
-import axios from "axios";
+import { authAPI } from "@/services/auth-api-calls";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function SignIn() {
   const [error, setError] = useState<string>("");
@@ -19,11 +20,13 @@ export default function SignIn() {
   });
   const [checkbox, handleCheckbox] = useState(false);
   const router = useRouter();
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData((prev) => ({ ...prev, [name]: value }));
     if (error) setError("");
   };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError("");
@@ -33,42 +36,20 @@ export default function SignIn() {
       setError("All fields are required.");
       return;
     }
-
     setIsLoading(true);
-
     try {
-      const response = await axios.post(
-        "https://digital-market-place-server-production.up.railway.app/api/v1/auth/login",
-        userData
-      );
-      console.log("Login successful:", response.data);
-      // Handle successful login here
-      // e.g., store token, redirect to dashboard
-      if (response.data.token) {
-        localStorage.setItem('token', response.data.token);
-        router.push('/vendor/dashboard');
-      }
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        // Handle different error cases
-        if (error.response) {
-          // Server responded with error
-          setError(
-            error.response.data?.message || 
-            error.response.data?.error || 
-            "Invalid email or password."
-          );
-        } else if (error.request) {
-          // Request made but no response
-          setError("Network error. Please check your connection.");
-        } else {
-          // Something else happened
-          setError("An unexpected error occurred. Please try again.");
-        }
-      } else {
-        setError("An unexpected error occurred. Please try again.");
-      }
-      console.error("Login error:", error);
+      const response = await authAPI.signIn(userData);
+      // ✅ Show success toast
+      toast.success(response.message || "Login successful!");
+      console.log("Login successful:", response);
+      // ✅ Redirect to dashboard
+      router.push("/vendor/dashboard");
+    } catch (err) {
+      const errorMessage =
+        err instanceof Error ? err.message : "An unexpected error occurred";
+      setError(errorMessage);
+      toast.error(errorMessage);
+      console.error("Login error:", err);
     } finally {
       setIsLoading(false);
     }
@@ -76,7 +57,10 @@ export default function SignIn() {
 
   return (
     <AuthWrapper heading="Sign in to access your dashboard">
-      <form onSubmit={handleSubmit} className="w-full md:w-[400px] space-y-6 mt-10">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full md:w-[400px] space-y-6 mt-10"
+      >
         <EmailInput
           name="email"
           label="Email"
@@ -105,19 +89,15 @@ export default function SignIn() {
             Forgot Password?
           </Link>
         </div>
-        
-        {error && (
-          <div className="text-red-600 text-xs px-3 py-1.5 bg-red-50 border border-red-200 rounded">
-            {error}
-          </div>
-        )}
 
-        <Button 
-          content={"Login"} 
+      <Toaster/>
+
+        <Button
+          content={"Login"}
           isLoading={isLoading}
           isDisabled={isLoading}
         />
-        
+
         <div className="text-xs md:text-sm space-x-1 text-center md:text-start">
           <span className="text-[#363636]">Don&apos;t have an account?</span>
           <Link

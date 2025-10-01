@@ -11,11 +11,13 @@ import { useState } from "react";
 type VerificationModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  email: string;
 };
 
 export default function VerificationModal({
   isOpen,
   onClose,
+  email,
 }: VerificationModalProps) {
   const [OTP, setOTP] = useState("");
   console.log(OTP);
@@ -42,7 +44,7 @@ export default function VerificationModal({
             Verify your Email
           </h1>
           <p className="text-gray-500 text-sm md:text-base text-center">
-            We&apos;ve sent a code to <strong>youremail@gmail.com</strong>
+            We&apos;ve sent a code to <strong>{email}</strong>
           </p>
         </div>
 
