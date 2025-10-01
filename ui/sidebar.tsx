@@ -6,9 +6,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
+import { authAPI } from "@/services/api-calls";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Sidebar() {
   const { mobileOpen, closeMobile } = useSidebar();
+  const handleLogout = async () => {
+    try {
+      await authAPI.signOut();
+      toast.success("Logged out successfully");
+      router.push("/sign-in");
+    } catch (err) {
+      toast.error("Logout failed");
+      console.error("Logout error:", err);
+    }
+  };
   const router = useRouter();
   const pathname = usePathname();
   return (
@@ -43,7 +55,10 @@ export default function Sidebar() {
                 <Link
                   key={index}
                   href={link.url}
-                  onClick={() => {router.push(link.url); closeMobile()}}
+                  onClick={() => {
+                    router.push(link.url);
+                    closeMobile();
+                  }}
                   className={`h-9 nd:h-11 w-full px-4 py-2.5 rounded-lg flex items-center gap-2 ${
                     isActive
                       ? "bg-[#16A249] text-white font-semibold"
@@ -62,7 +77,7 @@ export default function Sidebar() {
             })}
           </div>
           <div
-            onClick={() => {}}
+            onClick={handleLogout}
             className={`h-9 md:h-10 w-full px-4 py-2.5 rounded-lg flex items-center gap-2 text-[#FF4D4F] cursor-pointer hover:text-red-600 transition-colors duration-300`}
           >
             <Icon
@@ -75,6 +90,7 @@ export default function Sidebar() {
           </div>
         </section>
       </aside>
+      <Toaster />
     </>
   );
 }
