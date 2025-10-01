@@ -77,7 +77,7 @@ export default function MarketplaceHeader() {
         </div>
         
         <div className="text-[#16A249] md:h-[32px] w-fit p-1 border-b border-[#16A249] text-xs md:text-base whitespace-nowrap">
-          <Link href={"/sign-up"} className="cursor-pointer hover:text-[#148a3d] transition-colors">
+          <Link href={"/sign-in"} className="cursor-pointer hover:text-[#148a3d] transition-colors">
             Sell a Product
           </Link>
         </div>

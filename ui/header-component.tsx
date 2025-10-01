@@ -23,7 +23,6 @@ export default function Header() {
         if (response.data.user.fullName) {
           setFullName(response.data.user.fullName); // ✅ update state
         }
-        console.log(response)
       } catch (err) {
         const errorMessage =
           err instanceof Error ? err.message : "An unexpected error occurred";
