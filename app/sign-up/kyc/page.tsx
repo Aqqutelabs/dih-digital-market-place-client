@@ -5,7 +5,7 @@ import Button from "@/ui/button";
 import TextInput from "@/ui/forms/text-input";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react"; 
 
 export default function Kyc() {
   const [error, setError] = useState<string>("");
