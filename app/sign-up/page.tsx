@@ -1,5 +1,4 @@
 "use client";
-
 import AuthWrapper from "@/components/auth/auth-wrapper";
 import VerificationModal from "@/components/auth/verification-modal";
 import Button from "@/ui/button";
@@ -11,39 +10,31 @@ import axios from "axios";
 import Link from "next/link";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { toast } from "react-hot-toast";
-
 export default function SignUp() {
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const [userData, setUserData] = useState({
     email: "",
     fullName: "",
     password: "",
     phoneNumber: "",
   });
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData((prev) => ({ ...prev, [name]: value }));
     if (error) setError("");
   };
-
   // for opening verification modal
   const [isOpen, setIsOpen] = useState(false);
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
-
     try {
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
       if (!baseUrl) {
         throw new Error("Base URL is not configured");
       }
-
       const response = await axios.post(
         `${baseUrl}/api/v1/auth/signup`,
         userData,
@@ -54,19 +45,15 @@ export default function SignUp() {
           },
         }
       );
-
       // ✅ Show success toast
       toast.success(response?.data?.message || "Sign Up successful!");
-
       // ✅ Open verification modal
       setIsOpen(true);
-
       // Optionally log response (or store token/user)
       console.log("Signup successful:", response.data);
     } catch (err) {
       // Handle Axios error properly
       let errorMessage = "An unexpected error occurred";
-
       if (axios.isAxiosError(err)) {
         errorMessage =
           err.response?.data?.message ||
@@ -75,7 +62,6 @@ export default function SignUp() {
       } else if (err instanceof Error) {
         errorMessage = err.message;
       }
-
       setError(errorMessage);
       toast.error(errorMessage);
       console.error("Signup error:", err);
@@ -83,7 +69,6 @@ export default function SignUp() {
       setIsLoading(false);
     }
   };
-
   return (
     <AuthWrapper heading="Sign Up as a vendor on WiderNetFarms">
       <form onSubmit={handleSubmit} className="w-full md:w-[400px] space-y-3">
@@ -127,14 +112,9 @@ export default function SignUp() {
           </Link>
         </div>
       </form>
-
       {/* verification modal */}
       <VerificationModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
-
       {/* show error below the form if needed */}
-      {/* {error && (
-        <p className="text-red-500 text-sm text-center mt-2">{error}</p>
-      )} */}
     </AuthWrapper>
   );
 }
