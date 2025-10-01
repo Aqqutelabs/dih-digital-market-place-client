@@ -5,7 +5,7 @@ import Button from "@/ui/button";
 import Checkbox from "@/ui/forms/checkbox";
 import EmailInput from "@/ui/forms/email-input";
 import PasswordInput from "@/ui/forms/password-input";
-import { authAPI } from "@/services/auth-api-calls";
+import { authAPI } from "@/services/api-calls";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -41,7 +41,7 @@ export default function SignIn() {
       const response = await authAPI.signIn(userData);
       // ✅ Show success toast
       toast.success(response.message || "Login successful!");
-      console.log("Login successful:", response);
+      // console.log("Login successful:", response);
       // ✅ Redirect to dashboard
       router.push("/vendor/dashboard");
     } catch (err) {
@@ -49,7 +49,7 @@ export default function SignIn() {
         err instanceof Error ? err.message : "An unexpected error occurred";
       setError(errorMessage);
       toast.error(errorMessage);
-      console.error("Login error:", err);
+      // console.error("Login error:", err);
     } finally {
       setIsLoading(false);
     }
@@ -90,7 +90,7 @@ export default function SignIn() {
           </Link>
         </div>
 
-      <Toaster/>
+        <Toaster />
 
         <Button
           content={"Login"}

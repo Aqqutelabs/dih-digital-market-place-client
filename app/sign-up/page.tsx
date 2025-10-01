@@ -6,7 +6,7 @@ import EmailInput from "@/ui/forms/email-input";
 import NumberInput from "@/ui/forms/number-input";
 import PasswordInput from "@/ui/forms/password-input";
 import TextInput from "@/ui/forms/text-input";
-import { authAPI } from "@/services/auth-api-calls";
+import { authAPI } from "@/services/api-calls";
 import Link from "next/link";
 import { ChangeEvent, FormEvent, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
@@ -44,12 +44,13 @@ export default function SignUp() {
       // ✅ Open verification modal
       setIsOpen(true);
 
-      console.log("Signup successful:", response);
+      // console.log("Signup successful:", response);
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "An unexpected error occurred";
+      const errorMessage =
+        err instanceof Error ? err.message : "An unexpected error occurred";
       setError(errorMessage);
       toast.error(errorMessage);
-      console.error("Signup error:", err);
+      // console.error("Signup error:", err);
     } finally {
       setIsLoading(false);
     }
@@ -86,8 +87,12 @@ export default function SignUp() {
           placeholder="Enter your password"
           onChange={handleInputChange}
         />
-        <Toaster/>
-        <Button content="Sign Up" isLoading={isLoading} isDisabled={isLoading} />
+        <Toaster />
+        <Button
+          content="Sign Up"
+          isLoading={isLoading}
+          isDisabled={isLoading}
+        />
 
         <div className="text-xs md:text-sm space-x-1 text-center md:text-start">
           <span className="text-[#363636]">Already have an account?</span>
@@ -99,10 +104,10 @@ export default function SignUp() {
           </Link>
         </div>
       </form>
-      
+
       {/* verification modal */}
-      <VerificationModal 
-        isOpen={isOpen} 
+      <VerificationModal
+        isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         email={userData.email}
       />

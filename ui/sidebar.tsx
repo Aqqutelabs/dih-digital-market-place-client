@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Icon } from "@iconify/react";
-import { authAPI } from "@/services/auth-api-calls";
+import { authAPI } from "@/services/api-calls";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function Sidebar() {
@@ -55,7 +55,10 @@ export default function Sidebar() {
                 <Link
                   key={index}
                   href={link.url}
-                  onClick={() => {router.push(link.url); closeMobile()}}
+                  onClick={() => {
+                    router.push(link.url);
+                    closeMobile();
+                  }}
                   className={`h-9 nd:h-11 w-full px-4 py-2.5 rounded-lg flex items-center gap-2 ${
                     isActive
                       ? "bg-[#16A249] text-white font-semibold"
@@ -87,7 +90,7 @@ export default function Sidebar() {
           </div>
         </section>
       </aside>
-      <Toaster/>
+      <Toaster />
     </>
   );
 }

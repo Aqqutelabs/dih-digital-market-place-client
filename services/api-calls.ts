@@ -93,14 +93,22 @@ apiClient.interceptors.response.use(
 
 // Types
 export interface User {
-  id: string;
-  email: string;
-  fullName: string;
-  phoneNumber: string;
-  role?: string;
-  isVerified?: boolean;
-  createdAt?: string;
-  updatedAt?: string;
+  data: {
+    user: {
+    companyAddress :  string;
+    companyName :  string;
+    createdAt :  string;
+    email :  string;
+    fullName :  string; 
+    isEmailVerified :  boolean;
+    passwordResetExpires :  string;
+    passwordResetToken :  string; 
+    phoneNumber :  string; 
+    roleInCompany :  string; 
+    updatedAt :  string; 
+    userRole : string;
+    }
+  }
 }
 
 export interface SignUpData {
@@ -225,19 +233,16 @@ export const authAPI = {
   signOut: async (): Promise<void> => {
     try {
       tokenManager.clearAll();
-      // Let React handle redirect with router.push
     } catch (err) {
       tokenManager.clearAll();
       throw new Error(handleError(err));
     }
   },
 
-  getProfile: async (): Promise<User> => {
+  getUser: async (): Promise<User> => {
     try {
-      const response = await apiClient.get("/api/v1/auth/profile");
-
+      const response = await apiClient.get("/api/v1/users/me");
       if (response.data.user) tokenManager.setUser(response.data.user);
-
       return response.data;
     } catch (err) {
       throw new Error(handleError(err));
