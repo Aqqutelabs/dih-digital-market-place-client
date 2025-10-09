@@ -29,7 +29,7 @@ export default function Account() {
           <div className="p-5">
             <div className="flex justify-between items-center">
               <Heading heading="Balance" />
-              <div className="w-[208px]">
+              <div className="w-[140px] md:w-[208px]">
                 <Button
                   content="Request Withdrawal"
                   onClick={() => setIsOpen(true)}
@@ -54,10 +54,9 @@ export default function Account() {
         {/* transaction history */}
         <CardComponent>
           {/* heading, filters, button */}
-          <div className="flex justify-between items-center px-5">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-5">
             <Heading heading="Transaction History" />
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-3 md:w-[340px]">
+              <div className="flex items-center gap-3 md:w-[340px] mt-4 md:mt-0">
                 <SearchInput
                   value={query}
                   name="search"
@@ -73,10 +72,9 @@ export default function Account() {
                   icon="majesticons:filter-line"
                 />
               </div>
-            </div>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-10 overflow-auto w-full">
             <Table
               tableHead={transactionHistoryHead}
               tableData={transactionHistory}

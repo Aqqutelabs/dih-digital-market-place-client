@@ -31,17 +31,17 @@ export default function Button({
       normal: {
         primary: 'bg-[#16A249] text-white hover:bg-[#16A243] active:bg-[#16A241] cursor-pointer',
         secondary: 'bg-transparent text-[#16A249] border border-[#16A249] hover:bg-[#16A249]/10 active:bg-[#16A249]/20 cursor-pointer',
-        disabled: 'bg-[#94a3b8] text-white cursor-not-allowed'
+        disabled: 'bg-green-700 text-white cursor-not-allowed'
       },
       warning: {
         primary: 'bg-[#FFAC33] text-white hover:bg-[#ff9f1a] active:bg-[#e6900e]',
         secondary: 'bg-transparent text-[#FFAC33] border border-[#FFAC33] hover:bg-[#FFAC33]/10 active:bg-[#FFAC33]/20',
-        disabled: 'bg-[#94a3b8] text-white cursor-not-allowed'
+        disabled: 'bg-green-700 text-white cursor-not-allowed'
       },
       error: {
         primary: 'bg-[#FF4D4F] text-white hover:bg-[#ff3538] active:bg-[#e6292c]',
         secondary: 'bg-transparent text-[#FF4D4F] border border-[#FF4D4F] hover:bg-[#FF4D4F]/10 active:bg-[#FF4D4F]/20',
-        disabled: 'bg-[#94a3b8] text-white cursor-not-allowed'
+        disabled: 'bg-green-700 text-white cursor-not-allowed'
       },
       plain: {
         primary: "bg-[#F2F2F2] text-[#444A6D] hover:bg-gray-100",
@@ -57,7 +57,7 @@ export default function Button({
     return isSecondary ? variants[variant]?.secondary : variants[variant].primary;
   };
 
-  const classes = `${getVariantStyles()} rounded-[8px] h-9 md:h-[48px] w-full px-1 md:px-2 leading-6 font-medium text-xs md:text-sm md:text-base transition-all duration-200 ease-in-out transform ${
+  const classes = `${getVariantStyles()} rounded-[8px] h-8 md:h-[48px] w-full px-1 md:px-2 leading-6 font-medium text-xs md:text-sm md:text-base transition-all duration-200 ease-in-out transform ${
     icon ? "gap-2 flex items-center justify-center" : "flex items-center justify-center"
   } ${
     isDisabled ? '' : 'shadow-sm hover:shadow-md'

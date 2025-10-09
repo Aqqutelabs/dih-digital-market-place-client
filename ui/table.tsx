@@ -12,7 +12,7 @@ type TableProps<T> = {
   tableHead: Array<string>;
   tableData?: T[];
   renderRow: (row: T, index: number) => ReactNode;
-  isStraight?: boolean;
+  // isStraight?: boolean;
   pagination?: PaginationProps;
 };
 
@@ -20,7 +20,7 @@ export default function Table<T>({
   tableHead,
   tableData = [],
   renderRow,
-  isStraight = false,
+  // isStraight = false,
   pagination,
 }: TableProps<T>) {
   return (
@@ -32,7 +32,7 @@ export default function Table<T>({
             {tableHead.map((head, index) => (
               <th
                 key={index}
-                className={`px-6 py-3 ${isStraight ? "whitespace-nowrap" : ""}`}
+                className={`px-6 py-3 whitespace-nowrap`}
               >
                 {head}
               </th>
@@ -52,21 +52,21 @@ export default function Table<T>({
       </table>
 
       {/* Pagination */}
-      <div className="flex justify-center items-center border-t border-[#233E9733]">
+      <div className="flex justify-center items-center mx-auto border-t border-[#233E9733]">
         {pagination && (
-            <div className="flex items-center justify-between px-6 py-3 bg-white w-[480px]">
+            <div className="flex items-center justify-between px-6 py-3 bg-white w-[480px] gap-4">
             <button
                 onClick={() =>
                 pagination.onPageChange(Math.max(1, pagination.currentPage - 1))
                 }
                 disabled={pagination.currentPage === 1}
-                className="flex items-center gap-1 text-base text-[#757575] disabled:opacity-50"
+                className="flex items-center gap-1 text-xs md:text-base text-[#757575] disabled:opacity-50"
             >
                 <Icon icon={"fluent:arrow-left-20-filled"} height={14} width={14} color="gray"/>
                 Previous
             </button>
 
-            <div className="flex items-center gap-1 text-sm">
+            <div className="flex items-center gap-1 text-xs md:text-sm">
                 {Array.from({ length: pagination.totalPages }, (_, i) => i + 1)
                 .slice(
                     Math.max(0, pagination.currentPage - 2),
@@ -109,7 +109,7 @@ export default function Table<T>({
                 )
                 }
                 disabled={pagination.currentPage === pagination.totalPages}
-                className="flex items-center gap-1 text-sm text-[#757575] disabled:opacity-50"
+                className="flex items-center gap-1 text-xs md:text-sm text-[#757575] disabled:opacity-50"
             >
                 Next
                 <Icon icon={"fluent:arrow-right-20-filled"} height={14} width={14} color="gray"/>

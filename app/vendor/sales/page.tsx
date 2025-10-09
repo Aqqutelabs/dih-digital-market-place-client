@@ -37,7 +37,7 @@ const lines = [{ key: "value", label: "Month", color: "#EFDD76", showDots: false
         <div className="p-5">
           <div className="flex justify-between items-center">
             <Heading heading="Sales Overview" />
-            <div className="w-[100px]">
+            <div className="w-[80px] md:w-[100px]">
               <Button content="Daily" icon="tdesign:calendar" isSecondary />
             </div>
           </div>
@@ -62,7 +62,7 @@ const lines = [{ key: "value", label: "Month", color: "#EFDD76", showDots: false
         <div className="p-5">
             <div className="flex justify-between items-center">
                 <Heading heading="Gross Revenue" />
-                <div className="w-[100px]">
+                <div className="w-[80px] md:w-[100px]">
                 <Button content="Monthly" icon="tdesign:calendar" isSecondary />
                 </div>
             </div>
@@ -77,7 +77,7 @@ const lines = [{ key: "value", label: "Month", color: "#EFDD76", showDots: false
         </div>
       </CardComponent>
 
-      <div className="grid gap-x-5 gap-y-8 grid-cols-2">
+      <div className="grid gap-x-5 gap-y-8 grid-cols-1 md:grid-cols-2">
         {/* top selling products */}
         <CardComponent border={false}>
           <div className="flex justify-between items-center px-5">
@@ -100,60 +100,66 @@ const lines = [{ key: "value", label: "Month", color: "#EFDD76", showDots: false
         <CardComponent border={false}>
           <div className="p-5">
             <Heading heading="Monthly Sell-out Rate (Unit Sold)" />
-            <Table
-              tableHead={["#", "Name", "Popularity", "Sales"]}
-              tableData={selloutRate}
-              renderRow={(row) => (
-                <>
-                  <td className="px-6">{row.id}</td>
-                  <td className="px-6">{row.name}</td>
-                  <td className="px-6">
-                    <ProgressBar amount={row.popularity} color={row.color} />
-                  </td>
-                  <td className="px-6">
-                    <ProgressTab text={row.sales} color={row.color} />
-                  </td>
-                </>
-              )}
-            />
+            <div className="overflow-auto w-full">
+              <Table
+                tableHead={["#", "Name", "Popularity", "Sales"]}
+                tableData={selloutRate}
+                renderRow={(row) => (
+                  <>
+                    <td className="px-6">{row.id}</td>
+                    <td className="px-6 whitespace-nowrap">{row.name}</td>
+                    <td className="px-6">
+                      <ProgressBar amount={row.popularity} color={row.color} />
+                    </td>
+                    <td className="px-6">
+                      <ProgressTab text={row.sales} color={row.color} />
+                    </td>
+                  </>
+                )}
+              />
+            </div>
           </div>
         </CardComponent>
         {/* refunded vouchers */}
         <CardComponent border={false}>
           <div className="p-5">
             <Heading heading="Refunded Vouchers" />
-            <Table
-              tableHead={["#", "Name", "Amount"]}
-              tableData={refundedVouchers}
-              renderRow={(row) => (
-                <>
-                  <td className="px-6">{row.id}</td>
-                  <td className="px-6">{row.name}</td>
-                  <td className="px-6">₦{row.amount}</td>
-                </>
-              )}
-            />
+            <div className="overflow-auto w-full">
+              <Table
+                tableHead={["#", "Name", "Amount"]}
+                tableData={refundedVouchers}
+                renderRow={(row) => (
+                  <>
+                    <td className="px-6">{row.id}</td>
+                    <td className="px-6 whitespace-nowrap">{row.name}</td>
+                    <td className="px-6 whitespace-nowrap">₦{row.amount}</td>
+                  </>
+                )}
+              />
+            </div>
           </div>
         </CardComponent>
         {/* cancelled transactions */}
         <CardComponent border={false}>
           <div className="p-5">
             <Heading heading="Refunded Vouchers" />
-            <Table
-              tableHead={["#", "Name", "Amount"]}
-              tableData={cancelledTransactions}
-              renderRow={(row) => (
-                <>
-                  <td className="px-6">{row.id}</td>
-                  <td className="px-6">{row.name}</td>
-                  <td className="px-6">₦{row.amount}</td>
-                </>
-              )}
-            />
+            <div className="overflow-auto w-full">
+              <Table
+                tableHead={["#", "Name", "Amount"]}
+                tableData={cancelledTransactions}
+                renderRow={(row) => (
+                  <>
+                    <td className="px-6">{row.id}</td>
+                    <td className="px-6 whitespace-nowrap">{row.name}</td>
+                    <td className="px-6 whitespace-nowrap">₦{row.amount}</td>
+                  </>
+                )}
+              />
+            </div>
           </div>
         </CardComponent>
       </div>
-      <div className="w-[230px]">
+      <div className="w-full md:w-[230px]">
       <Button content="Download Report" icon="material-symbols:download" isSecondary/>
       </div>
     </section>

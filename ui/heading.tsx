@@ -7,8 +7,8 @@ type HeadingProps = {
 export default function Heading({ heading, subtitle, className }: HeadingProps) {
     return (
         <div className={`space-y-1 text-[#122231] ${className}`}>
-            <h2 className="text-xl font-semibold">{heading}</h2>
-            {subtitle && <p className="text-sm font-normal">{subtitle}</p>}
+            <h2 className="text-base md:text-xl font-semibold">{heading}</h2>
+            {subtitle && <p className="text-xs md:text-sm font-normal">{subtitle}</p>}
         </div>
     )
 }

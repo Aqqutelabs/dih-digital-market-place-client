@@ -14,7 +14,7 @@ export default function HardwareProducts() {
     ];
   return (
     <CategoryWrapper title="Browse Hardware" product_count="500" categories={categories}>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {products.map((product) => (
           <ProductCard
             key={product.id}
