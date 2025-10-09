@@ -18,7 +18,7 @@ export default function AuthWrapper({ children, heading, subtitle }: AuthWrapper
   ];
 
   return (
-    <section className="h-screen md:h-fit flex justify-center items-center py-[20px] px-5 md:px-[100px] bg-[#F2F7F3]">
+    <section className="h-screen md:h-full flex justify-center items-center py-[20px] px-5 md:px-[100px] bg-[#F2F7F3]">
       <div className="flex justify-center items-center h-full md:h-[680px] max-h-[700px] w-full">
         <div className="w-full h-full bg-[#16A249] rounded-l-4xl hidden md:block"></div>
         <div className="w-full h-fit md:h-full bg-white md:rounded-r-4xl relative px-5 md:px-20 py-10 space-y-3.5 z-10">
@@ -38,14 +38,14 @@ export default function AuthWrapper({ children, heading, subtitle }: AuthWrapper
           </div>
           <h1 className="text-[#122231] font-medium text-xl md:text-4xl">{heading}</h1>
           {subtitle && <p className="text-sm md:text-base text-[#122231]">{subtitle}</p>}
-          <div>{children}</div>
+          <div className="">{children}</div>
 
           {/* watermark image */}
           <Image
             src={"/images/auth/auth-watermark.svg"}
             alt="Digital Market Place"
             height={200}
-            width={1000}
+            width={500}
             className="absolute right-0 bottom-0 rounded-br-4xl"
           />
         </div>

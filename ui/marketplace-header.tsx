@@ -42,13 +42,13 @@ export default function MarketplaceHeader() {
         </div>
         |
         <div className="flex gap-1 items-center">
-          <span className="hover:text-[#16A249] cursor-pointer transition-colors">
+          <Link href={"/sign-in"} className="hover:text-[#16A249] cursor-pointer transition-colors">
             Sign In
-          </span>
+          </Link>
           /
-          <span className="hover:text-[#16A249] cursor-pointer transition-colors">
+          <Link href={"/sign-up"} className="hover:text-[#16A249] cursor-pointer transition-colors">
             Sign Up
-          </span>
+          </Link>
         </div>
       </div>
       
