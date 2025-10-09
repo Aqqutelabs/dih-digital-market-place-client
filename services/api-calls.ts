@@ -2,6 +2,7 @@ import axios, { AxiosError } from "axios";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
+
 // Token management utilities
 const TOKEN_KEY = "auth_token";
 const USER_KEY = "user_data";
