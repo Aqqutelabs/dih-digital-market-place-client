@@ -1,8 +1,5 @@
 import axios, { AxiosError } from "axios";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-// Add this temporary console.log at the top of your auth.ts file
-console.log('BASE_URL:', process.env.NEXT_PUBLIC_BASE_URL);
+import { BASE_URL } from "../lib/config/api";
 
 // Token management utilities
 const TOKEN_KEY = "auth_token";
@@ -65,19 +62,19 @@ const apiClient = axios.create({
 
 // Add token to every request if available
 apiClient.interceptors.request.use(
-  (config) => {
+  (config: any) => {
     const token = tokenManager.getToken();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
-  (error) => Promise.reject(error)
+  (error: any) => Promise.reject(error)
 );
 
 // Handle response errors globally
 apiClient.interceptors.response.use(
-  (response) => response,
+  (response: any) => response,
   (error: AxiosError<{ message?: string; error?: string }>) => {
     // Handle unauthorized errors gracefully
     if (error.response?.status === 401) {
