@@ -7,7 +7,7 @@ declare const process: any;
 // Read NEXT_PUBLIC_BASE_URL from the environment (Next.js exposes NEXT_PUBLIC_* to the client).
 // export const BASE_URL: string = (process as any)?.env?.NEXT_PUBLIC_BASE_URL || "";
 
-export const BASE_URL : string = "https://digital-market-place-server-5viz.onrender.com";
+export const BASE_URL : string = "https://digital-market-place-server-1.onrender.com";
 
 // Helper to retrieve base URL if consumers prefer a function.
 export const getBaseUrl = (): string => BASE_URL;
