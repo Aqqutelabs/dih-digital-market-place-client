@@ -1,13 +1,11 @@
 // Shared API configuration
 // Exports a single BASE_URL constant so all API callers import the same source of truth.
-// If TypeScript complains about 'process' not being defined in the environment,
-// declare it here so this module can read env vars at build time in Next.js.
-declare const process: any;
-
 // Read NEXT_PUBLIC_BASE_URL from the environment (Next.js exposes NEXT_PUBLIC_* to the client).
-// export const BASE_URL: string = (process as any)?.env?.NEXT_PUBLIC_BASE_URL || "";
+// If you prefer to read from env, uncomment the line below. Next.js exposes NEXT_PUBLIC_* variables
+// to the browser at build time, so using process.env.NEXT_PUBLIC_BASE_URL will work when set.
+// export const BASE_URL: string = process.env.NEXT_PUBLIC_BASE_URL ?? "https://digital-market-place-server-1.onrender.com";
 
-export const BASE_URL : string = "https://digital-market-place-server-1.onrender.com";
+export const BASE_URL: string = "https://digital-market-place-server-1.onrender.com";
 
 // Helper to retrieve base URL if consumers prefer a function.
 export const getBaseUrl = (): string => BASE_URL;
